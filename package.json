@@ -1,0 +1,27 @@
+{
+  "name": "contas-familia",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "gen": "node scripts/gen-ui.mjs",
+    "dev": "npm run gen && next dev",
+    "build": "node scripts/unpack.mjs && npm run gen && next build",
+    "start": "next start",
+    "hash": "node scripts/hash-senha.mjs"
+  },
+  "engines": {
+    "node": "22.x"
+  },
+  "dependencies": {
+    "@vercel/blob": "2.8.1",
+    "bcryptjs": "3.0.3",
+    "exceljs": "4.4.0",
+    "jose": "6.2.12",
+    "next": "16.3.8",
+    "nodemailer": "10.0.16",
+    "pdfjs-dist": "4.10.38",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  }
+}

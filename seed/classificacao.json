@@ -1,0 +1,196 @@
+{
+ "fonte": "Receita Federal — dados abertos do CNPJ (atividade econômica principal / CNAE), consultados via minhareceita.org em 26/10/2026",
+ "cnpj": {
+  "07724848000102": {
+   "razao": "M S CORREA SILFONI",
+   "cnae": "Comércio varejista especializado de equipamentos de telefonia e comunicação",
+   "categoria": "Casa & compras",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "26328218000163": {
+   "razao": "CSRA BRASIL SERVICOS DE TECNOLOGIA LTDA.",
+   "cnae": "Preparação de documentos e serviços especializados de apoio administrativo",
+   "categoria": "Serviços administrativos",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "46535946000153": {
+   "razao": "BRUNA DOS REIS GURIAN ARRAIS ADAO (MEI)",
+   "cnae": "Fabricação de massas alimentícias",
+   "categoria": "Mercado",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "54092946000154": {
+   "razao": "ANGRA SERVICOS ADMINISTRATIVOS LTDA",
+   "cnae": "Serviços combinados de escritório e apoio administrativo",
+   "categoria": "Serviços administrativos",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "68141456000105": {
+   "razao": "FARMACIA HOMEOPATICA ARGENTUM LTDA",
+   "cnae": "Comércio varejista de produtos farmacêuticos homeopáticos",
+   "categoria": "Saúde",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "17276511000133": {
+   "razao": "SF PAGAMENTOS LTDA (STAFEBANK)",
+   "cnae": "Intermediação e agenciamento de serviços e negócios em geral",
+   "categoria": "Pagamentos via intermediador",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "38501211000180": {
+   "razao": "38.501.211 BRUNO DE OLIVEIRA DE SOUZA (MEI)",
+   "cnae": "Outras atividades de ensino",
+   "categoria": "Educação",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "03988838000123": {
+   "razao": "PAULO GABRIEL PLATZER (LOJA GABIRUCHA)",
+   "cnae": "Comércio varejista de artigos de armarinho",
+   "categoria": "Casa & compras",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "59116673000154": {
+   "razao": "OS GIRASSOIS RESTAURANTE LTDA",
+   "cnae": "Restaurantes e similares",
+   "categoria": "Alimentação fora",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "37129168000101": {
+   "razao": "YUZU DELIVERY LTDA",
+   "cnae": "Fornecimento de alimentos preparados para consumo domiciliar",
+   "categoria": "Alimentação fora",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "44189389000130": {
+   "razao": "PANIFICADORA E CONFEITARIA NOVA VITORIA REGIA LTDA",
+   "cnae": "Padaria e confeitaria",
+   "categoria": "Alimentação fora",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "44832584000137": {
+   "razao": "KROG QUEIJOS E VINHOS NATURAIS LTDA",
+   "cnae": "Comércio varejista de bebidas",
+   "categoria": "Mercado",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "18744639000147": {
+   "razao": "AMERICAN PRODUCT LTDA",
+   "cnae": "Comércio atacadista de produtos alimentícios",
+   "categoria": "Mercado",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "18368911000131": {
+   "razao": "ASSOCIACAO GOTAS DE ORVALHO",
+   "cnae": "Atividades de associações de defesa de direitos sociais",
+   "categoria": "Doações",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "42129994000190": {
+   "razao": "UMAI HOUSE ABC ALIMENTOS LTDA",
+   "cnae": "Lanchonetes, casas de chá, de sucos e similares",
+   "categoria": "Alimentação fora",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "21110511000136": {
+   "razao": "GERSON SEGANTIN GONSALES LTDA",
+   "cnae": "Comércio varejista de artigos e alimentos para animais de estimação",
+   "categoria": "Pets",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "34568387000107": {
+   "razao": "GARDEN QUEIROZ FILHO COMERCIO DE FLORES E PAISAGISMO LTDA",
+   "cnae": "Comércio varejista de plantas e flores naturais",
+   "categoria": "Casa & compras",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "61602199000112": {
+   "razao": "COMPANHIA ULTRAGAZ S A",
+   "cnae": "Comércio atacadista de gás liquefeito de petróleo (GLP)",
+   "categoria": "Contas da casa",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "34228040000107": {
+   "razao": "AILTON LEME CARDOSO (ALC.LED)",
+   "cnae": "Comércio varejista de material elétrico",
+   "categoria": "Casa & compras",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "52954652000169": {
+   "razao": "52.954.652 DANIEL BONIFACIO FRAZATTI (MEI)",
+   "cnae": "Estacionamento de veículos",
+   "categoria": "Transporte",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "00347918000101": {
+   "razao": "BOM SENSO CAFE & RESTAURANTE LTDA",
+   "cnae": "Minimercados, mercearias e armazéns",
+   "categoria": "Mercado",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "02768196000194": {
+   "razao": "REFEICOES M & M LTDA (TOQUE E TEMPERO)",
+   "cnae": "Restaurantes e similares",
+   "categoria": "Alimentação fora",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "05365199000175": {
+   "razao": "LADOSOL COMERCIO E SERVICOS DE EVENTOS LTDA",
+   "cnae": "Restaurantes e similares",
+   "categoria": "Alimentação fora",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "55502464000198": {
+   "razao": "DNFV GRAND PLAZA ALIMENTOS LTDA (MANW)",
+   "cnae": "Lanchonetes, casas de chá, de sucos e similares",
+   "categoria": "Alimentação fora",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "57491052000125": {
+   "razao": "SUPERMERCADO NAGATA LTDA",
+   "cnae": "Supermercados",
+   "categoria": "Mercado",
+   "evidencia": "CNAE principal na Receita Federal"
+  },
+  "26356125000142": {
+   "razao": "ZIG TECNOLOGIA INSTITUICAO DE PAGAMENTO S.A.",
+   "cnae": "não consultado na Receita",
+   "categoria": "Pagamentos via intermediador",
+   "evidencia": "nome do favorecido no extrato indica empresa de pagamentos; o estabelecimento final não aparece"
+  },
+  "33967103000184": {
+   "razao": "DEMERGE BRASIL FACILITADORA DE PAGAMENTOS LTDA",
+   "cnae": "não consultado na Receita",
+   "categoria": "Pagamentos via intermediador",
+   "evidencia": "nome do favorecido no extrato indica empresa de pagamentos; o estabelecimento final não aparece"
+  },
+  "19468242000132": {
+   "razao": "ZOOP BRASIL",
+   "cnae": "não consultado na Receita",
+   "categoria": "Pagamentos via intermediador",
+   "evidencia": "nome do favorecido no extrato indica empresa de pagamentos; o estabelecimento final não aparece"
+  },
+  "06308851000182": {
+   "razao": "MOOZ SOLUCOES FINANCEIRAS LTDA",
+   "cnae": "não consultado na Receita",
+   "categoria": "Pagamentos via intermediador",
+   "evidencia": "nome do favorecido no extrato indica empresa de pagamentos; o estabelecimento final não aparece"
+  },
+  "13382906000160": {
+   "razao": "GOOGLE BRASIL PAGAMENTOS LTDA.",
+   "cnae": "não consultado na Receita",
+   "categoria": "Pagamentos via intermediador",
+   "evidencia": "nome do favorecido no extrato indica empresa de pagamentos; o estabelecimento final não aparece"
+  },
+  "49148849000104": {
+   "razao": "CANVI",
+   "cnae": "não consultado na Receita",
+   "categoria": "Pagamentos via intermediador",
+   "evidencia": "nome do favorecido no extrato indica empresa de pagamentos; o estabelecimento final não aparece"
+  }
+ },
+ "pendentes_consulta": [
+  "58891504000129"
+ ],
+ "nomes": {},
+ "_como_usar": "cnpj: categoria pelo CNAE consultado na Receita. nomes: trecho do nome do favorecido (sem acento, maiúsculas) -> categoria, informado pelo Silvano."
+}

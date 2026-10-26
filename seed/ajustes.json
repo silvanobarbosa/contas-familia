@@ -1,0 +1,30 @@
+{
+  "notas": {},
+  "rules": {},
+  "tax": {
+    "cats": [
+      {
+        "nome": "ReverbLabs",
+        "subs": []
+      }
+    ],
+    "dimren": {},
+    "dims": [
+      {
+        "id": "resp",
+        "itens": [
+          "Casa / família",
+          "Silvano",
+          "Gisele",
+          "Heitor",
+          "Vinicius",
+          "Victor"
+        ],
+        "nome": "De quem é o gasto"
+      }
+    ],
+    "renomes": {},
+    "subren": {}
+  },
+  "tx": {}
+}

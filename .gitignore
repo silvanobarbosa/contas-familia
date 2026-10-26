@@ -1,0 +1,15 @@
+node_modules/
+.next/
+lib/generated/
+.env*
+.vercel/
+.local-store/
+# nunca versionar dados bancários
+*.ofx
+*.pdf
+*.xlsx
+dados-locais/
+
+# empacotamento usado só na publicação sem Git
+parts/
+bundle.b64

@@ -1,0 +1,14 @@
+[
+  {
+    "login": "silvano",
+    "nome": "Silvano",
+    "email": "silvanobarbosa@gmail.com",
+    "hash": "<gere com npm run hash>"
+  },
+  {
+    "login": "gisele",
+    "nome": "Gisele",
+    "email": "",
+    "hash": "<gere com npm run hash>"
+  }
+]
