@@ -8,20 +8,29 @@
     "dev": "npm run gen && next dev",
     "build": "node scripts/unpack.mjs && npm run gen && next build",
     "start": "next start",
-    "hash": "node scripts/hash-senha.mjs"
+    "hash": "node scripts/hash-senha.mjs",
+    "test": "vitest run",
+    "test:cov": "vitest run --coverage"
   },
   "engines": {
     "node": "22.x"
   },
   "dependencies": {
-    "@vercel/blob": "2.8.1",
+    "@vercel/blob": "^2.8.2",
     "bcryptjs": "3.0.3",
     "exceljs": "4.4.0",
     "jose": "6.2.12",
-    "next": "16.3.8",
+    "next": "^16.4.3",
     "nodemailer": "10.0.16",
     "pdfjs-dist": "4.10.38",
     "react": "19.3.0",
     "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.0.0",
+    "vitest": "^4.0.0"
+  },
+  "overrides": {
+    "zod": "^4.6.6"
   }
 }

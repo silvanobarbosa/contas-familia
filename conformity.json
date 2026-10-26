@@ -1,0 +1,22 @@
+{
+  "$schema": "https://reverblabs.com.br/schemas/conformity-v1.json",
+  "templateVersion": "bespoke-1.0.0",
+  "notes": "App feito FORA do golden template (Next no-React, paginas HTML inline), adotado ao padrao da frota em 2026-10-26: headers de seguranca completos, login proprio hardened (bcrypt 12 + lockout + anti-enumeracao), /api/health e /api/conformity, testes. templateVersion=bespoke marca que nao nasceu do starter — o drift-check le isto como app bespoke, nao como drift do template.",
+  "baseline": {
+    "securityHeaders": [
+      "strict-transport-security",
+      "x-frame-options",
+      "x-content-type-options",
+      "referrer-policy",
+      "permissions-policy",
+      "content-security-policy"
+    ],
+    "auth": "login-proprio-bcrypt12-lockout-anti-enum",
+    "authHardening": ["password-lockout", "session-reauth-password-change", "anti-enumeration", "reset-token-sha256-30min"],
+    "storage": "vercel-blob-privado",
+    "endpoints": ["/api/health", "/api/conformity"],
+    "tests": ["vitest"],
+    "runtime": "node22",
+    "framework": "next"
+  }
+}

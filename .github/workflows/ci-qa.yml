@@ -1,0 +1,128 @@
+name: CI-QA (ReverbLabs)
+# QA de código da frota (report-mode): build (gate) + deps audit + Semgrep + Trivy
+#   + complexidade ciclomática (ESLint) + estrutura de deps (dependency-cruiser) + dead-code (knip).
+# Endurecer depois: trocar os "|| echo" / --exit-code / continue-on-error por falha real quando o app estiver limpo.
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+permissions:
+  contents: read
+  security-events: write
+jobs:
+  qa:
+    # Runner self-hosted na VPS (GitHub-hosted bloqueado por billing da conta).
+    # Cada repo da frota tem sua propria instancia de runner na VPS (conta pessoal nao tem runner de org).
+    runs-on: [self-hosted, vps]
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+
+      - name: Install deps
+        run: npm ci || npm install || echo "sem package-lock/deps"
+
+      - name: Build (report — precisa de env; gate real é no deploy Vercel)
+        run: npm run build --if-present || echo "::warning::build falhou na CI (provável falta de env; valida no deploy)"
+
+      - name: npm audit (deps, report)
+        run: npm audit --audit-level=high || echo "::warning::npm audit achou vulnerabilidades (high+)"
+
+      - name: Semgrep SAST (report)
+        run: |
+          # Na VPS o semgrep ja esta preinstalado (/usr/local/bin, venv /opt/semgrep-venv).
+          # O fallback cobre qualquer runner que ainda nao o tenha.
+          command -v semgrep >/dev/null 2>&1 \
+            || python3 -m pip install --break-system-packages --quiet semgrep \
+            || pipx install semgrep \
+            || echo "::warning::semgrep indisponivel — pulando"
+          command -v semgrep >/dev/null 2>&1 || exit 0
+          semgrep scan --config p/security-audit --config p/secrets --config p/owasp-top-ten \
+            --severity ERROR --error || echo "::warning::Semgrep achou possíveis problemas"
+        continue-on-error: true
+
+      - name: Trivy (vuln+secret+misconfig, report)
+        run: |
+          # Idem: preinstalado na VPS. Sem sudo o install script nao escreve em /usr/local/bin,
+          # entao o fallback instala em ~/.local/bin.
+          if ! command -v trivy >/dev/null 2>&1; then
+            mkdir -p "$HOME/.local/bin"
+            curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh \
+              | sh -s -- -b "$HOME/.local/bin" || echo "::warning::falha instalando Trivy"
+            export PATH="$HOME/.local/bin:$PATH"
+          fi
+          command -v trivy >/dev/null 2>&1 || exit 0
+          trivy fs --scanners vuln,secret,misconfig --severity HIGH,CRITICAL --exit-code 0 --no-progress . \
+            || echo "::warning::Trivy achou possíveis problemas"
+        continue-on-error: true
+
+      # ---- QA de qualidade/estrutura (report). Tools no node_modules do repo p/ acharem o typescript. ----
+      - name: QA tools (instala complexity/deps/dead-code)
+        run: npm i --no-save eslint@9 typescript-eslint@8 dependency-cruiser@16 knip@5 || echo "::warning::falha instalando QA tools"
+        continue-on-error: true
+
+      - name: Complexidade ciclomática (ESLint, report)
+        run: |
+          cat > eslint.qa.mjs <<'EOF'
+          import tseslint from 'typescript-eslint';
+          export default [
+            { ignores: ['**/node_modules/**','**/.next/**','**/dist/**','**/build/**','**/out/**','**/coverage/**','**/*.config.*','**/*.d.ts','**/eslint.qa.mjs','**/.depcruise.qa.cjs'] },
+            {
+              files: ['**/*.{ts,tsx,js,jsx,mjs,cjs}'],
+              languageOptions: { parser: tseslint.parser, parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' } },
+              rules: {
+                complexity: ['warn', 12],
+                'max-depth': ['warn', 4],
+                'max-params': ['warn', 5],
+                'max-nested-callbacks': ['warn', 4],
+                'max-lines-per-function': ['warn', { max: 80, skipComments: true, skipBlankLines: true }],
+              },
+            },
+          ];
+          EOF
+          npx --no-install eslint --no-config-lookup --no-inline-config --config eslint.qa.mjs . \
+            || echo "::warning::ESLint: complexidade/tamanho acima do limite (report)"
+        continue-on-error: true
+
+      - name: Estrutura de dependências (dependency-cruiser, report)
+        run: |
+          cat > .depcruise.qa.cjs <<'EOF'
+          module.exports = {
+            forbidden: [
+              { name: 'no-circular', severity: 'warn', comment: 'ciclo de dependencia',
+                from: {}, to: { circular: true } },
+              { name: 'no-dev-in-prod', severity: 'warn', comment: 'prod importando devDependency',
+                from: { pathNot: '[.](spec|test|config)[.]|[.]qa[.]cjs$' }, to: { dependencyTypes: ['npm-dev'] } },
+            ],
+            options: {
+              doNotFollow: { path: 'node_modules' },
+              exclude: 'node_modules|[.]next|dist|build|out|coverage',
+              tsPreCompilationDeps: true,
+              tsConfig: { fileName: 'tsconfig.json' },
+              enhancedResolveOptions: { extensions: ['.js','.jsx','.ts','.tsx','.mjs','.cjs','.json'] },
+            },
+          };
+          EOF
+          [ -f tsconfig.json ] || sed -i '/tsConfig:/d' .depcruise.qa.cjs
+          SRC=""; for d in src app lib components pages server; do [ -d "$d" ] && SRC="$SRC $d"; done
+          [ -z "$SRC" ] && SRC="."
+          npx --no-install depcruise --config .depcruise.qa.cjs --no-progress --output-type err-long $SRC \
+            || echo "::warning::dependency-cruiser: ciclos/violacoes de estrutura (report)"
+        continue-on-error: true
+
+      - name: Dead code / deps nao usadas (knip, report)
+        run: npx --no-install knip --no-exit-code --reporter compact || echo "::warning::knip achou codigo/deps sem uso (report)"
+        continue-on-error: true
+
+      - name: Testes + coverage (report; roda se o app tiver script "test")
+        run: |
+          if node -e "process.exit(require('./package.json').scripts?.test?0:1)" 2>/dev/null; then
+            echo "rodando testes do app…"; npm test || echo "::warning::testes/coverage falharam (report)"
+          else
+            echo "sem script \"test\" — pulando (molde Vitest: hub adiciona nos apps novos)"
+          fi
+        continue-on-error: true
