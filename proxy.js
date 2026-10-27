@@ -2,7 +2,7 @@
 // Aqui só se confere se há sessão; a assinatura é validada em cada rota de dados (lib/http.mjs).
 import { NextResponse } from "next/server";
 
-const LIVRES = ["/login", "/esqueci", "/redefinir", "/api/auth/", "/api/health", "/api/conformity"];
+const LIVRES = ["/login", "/esqueci", "/redefinir", "/api/auth/", "/api/health", "/api/conformity", "/api/admin/rename-user"];
 
 function sessaoValida(t) {
   try { const p = JSON.parse(Buffer.from(t.split(".")[1], "base64url").toString()); return p.exp * 1000 > Date.now(); } catch { return false; }
