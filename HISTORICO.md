@@ -2,6 +2,14 @@
 
 Diário de evolução do produto. Mais recente em cima.
 
+## 2026-10-26 — Novo visual (Skymetrics)
+
+**Entregue:** PR #1 mergeado na main + no ar. Só visual — `ui/app.html` + `ui/auth.html`
+(+310/-180). Menu lateral no desktop / barra deslizante no mobile, cartões brancos sobre cinza,
+verde de destaque, números em Space Grotesk + rótulos IBM Plex Sans, gráficos redesenhados.
+**Por quê:** proposta de design do próprio dono. **Validado:** build ok, 7/7 testes, login 200,
+só Google Fonts (dentro da CSP — nada bloqueado). Nada tocado em `lib/`, `app/`, `scripts/` nem dados.
+
 ## 2026-10-26 — Resgate e adoção ao padrão da frota
 
 **Entregue:** app reconstruído e funcionando ponta a ponta em produção
